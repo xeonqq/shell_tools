@@ -1,0 +1,5 @@
+git clone https://github.com/xeonqq/shell_tools.git ~/bin
+
+# Add the following to ~/.zshrc
+export PATH="$PATH:$HOME/bin"
+alias -s cpp='~/bin/run-cpp'
