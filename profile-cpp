@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+runnable="$1"
+shift
+parameters=("$@")
+callgrindout=$(mktemp)
+valgrind --tool=callgrind --callgrind-out-file="$callgrindout" "$runnable" "${parameters:-}"
+kcachegrind "$callgrindout"
+rm $callgrindout
+
