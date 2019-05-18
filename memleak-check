@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+runnable="$1"
+shift
+parameters=("$@")
+callgrindout=$(mktemp)
+valgrind --leak-check=yes "$runnable" "${parameters:-}"
+
