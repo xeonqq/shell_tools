@@ -6,6 +6,6 @@ src="$1"
 shift
 parameters=("$@")
 runable=$(mktemp)
-g++ -o $runable --std=c++11 "$src"
+g++ -o $runable --std=c++14 "$src"
 $runable "${parameters:-}"
 rm $runable
