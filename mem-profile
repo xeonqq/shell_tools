@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+runnable="$1"
+shift
+massifout=$(mktemp)
+valgrind --tool=massif --stacks=yes --massif-out-file="${massifout}" "$runnable"
+massif-visualizer "${massifout}"
+ms_print "${massifout}" | head -45
+echo massifout output file: "${massifout}"
+
+
